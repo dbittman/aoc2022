@@ -11,8 +11,10 @@ fn main() {
 }
 
 fn find_first_after_marker(input: &str, window_size: usize) -> Option<usize> {
-    let x = input.chars().collect::<Vec<char>>();
-    x.windows(window_size)
+    input
+        .chars()
+        .collect::<Vec<char>>()
+        .windows(window_size)
         .enumerate()
         .find_map(|(idx, slice)| {
             if (1..slice.len()).any(|i| slice[i..].contains(&slice[i - 1])) {
